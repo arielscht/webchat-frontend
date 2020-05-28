@@ -1,0 +1,43 @@
+.searchFriendContainer {
+    height: calc(100% - 50px);
+}
+
+.searchFriendContainer li {
+    font-size: 1em;
+}
+
+.searchHeader {
+    height: 50px;
+    background-color: #CCCCCC;
+    padding: 10px
+}
+
+.searchHeader input {
+    border-radius: 25px;
+    border: 0;
+    height: 30px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.noCursor {
+    cursor: initial;
+}
+
+.noUser {
+    text-align: center;
+    margin: 20px
+}
+
+.iconGroup {
+    width: 70px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}

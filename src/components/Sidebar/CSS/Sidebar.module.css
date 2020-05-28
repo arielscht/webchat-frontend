@@ -1,0 +1,14 @@
+.sidebarLi {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px lightgray solid;
+    height: 50px;
+    padding: 15px;
+    font-size: 1.25em;
+}
+
+.sidebarUl {
+    background-color: rgba(241, 241, 241, 0.925);
+    height: calc(100% - 50px);
+    overflow-y: auto;
+}

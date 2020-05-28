@@ -1,0 +1,63 @@
+.header {
+    height: 50px;
+    box-shadow: -15px 10px 10px black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dab600;
+    border-right: 1px solid #ccc;
+}
+
+.header div {
+    height: 100%;
+}
+
+.headerIcon {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    height: 100%;
+    padding: 0 20px;
+    position: relative;
+}
+
+.requestsNumber {
+    position: absolute;
+    background-color: rgb(22, 182, 22);
+    border-radius: 50%;
+    padding: 2px;
+    color: white;   
+    right: 2px;
+    top: 5px;
+    min-width: 20px;
+    min-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.tabSelected {
+    background-color: #A48200;
+}
+
+.logoutParagraph {
+    margin-bottom: 10px;
+}
+
+
+.logoutButton {
+    width: 100%;
+    border: 0px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #F1F1F1;
+}
+
+.logoutButton:hover {
+    background-color: lightgreen;
+}
+
+.Danger:hover {
+    background-color: salmon;
+}

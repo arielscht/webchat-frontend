@@ -1,0 +1,14 @@
+.notificationContainer {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.noMessages {
+    background-color: #97989C;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    display: inline-block;
+    font-weight: 600;
+}

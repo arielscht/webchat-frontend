@@ -1,0 +1,57 @@
+.noFriend {
+    text-align: center;
+    margin: 20px
+}
+
+.li {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    border-bottom: 1px lightgray solid;
+    padding: 0 15px;
+    justify-content: center;
+}
+
+/* .li p {
+    border: 1px solid red;
+} */
+
+.friendNameWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.friendName {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.typing {
+    color: green;
+}
+
+.online {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: green;
+}
+
+.lastMessageContainer {
+    display: flex;
+    align-items: center;
+}
+
+.lastMessage {
+    flex:1;
+    font-size: .9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+}

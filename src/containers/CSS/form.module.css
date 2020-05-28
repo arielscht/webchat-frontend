@@ -1,0 +1,65 @@
+.formContainer {
+    margin: 150px auto;
+    text-align: center;
+    box-shadow: 5px 5px 10px -5px black;
+    width: 300px;
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #F8ED79;
+  }
+  
+  .formContainer h1 {
+    margin-bottom: 10px;
+  }
+  
+  .formContainer form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formContainer form input {
+    margin-top: 10px;
+    font-size: 1.25em;
+    padding: 5px;
+    border-radius: 8px;
+    border: 0px;
+  }
+  
+  .btnGroup {
+    display: flex;
+    padding: 20px;
+  }
+  
+  .btnGroup button {
+    flex: 1;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px #ccc solid;
+    padding: 5px;
+    background-color: #381460;
+    color: white;
+    border: 0;
+    cursor: pointer;
+  }
+  
+  .btnGroup a {
+    text-decoration: none;
+    color: white;
+    background-color: #381460;
+    flex: 1;
+    margin-top: 5px;
+    margin-right: 10px;
+    border-radius: 8px;
+    border: 0;
+    padding: 5px;
+  }
+  
+  .valError {
+    background-color: salmon;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid red;
+    font-size: 1.1em;
+    font-weight: bold;
+  }

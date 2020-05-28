@@ -1,0 +1,12 @@
+.aside {
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    background-color: rgba(241, 241, 241, 0.925);
+    transition: transform 0.3s ease-out;
+    z-index: 500;
+}
+
+.close {
+    transform: translateX(-100%);
+}

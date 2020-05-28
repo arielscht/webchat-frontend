@@ -1,0 +1,23 @@
+.iconGroup {
+    width: 70px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.noRequests {
+    text-align: center;
+    margin: 20px
+}
+
+.requesterName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

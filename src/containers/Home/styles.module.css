@@ -1,0 +1,94 @@
+.mainDiv {
+    display: flex;
+    height: 100vh;
+}
+
+/* .mainDiv aside {
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    background-color: rgba(241, 241, 241, 0.925);
+    transition: transform 0.3s ease-out;
+    z-index: 500;
+
+} */
+
+/* .close {
+    transform: translateX(-100%);
+} */
+
+/* .header {
+    height: 50px;
+    box-shadow: -15px 10px 10px black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #dab600;
+    border-right: 1px solid #ccc;
+}
+
+.header div {
+    height: 100%;
+}
+
+.headerIcon {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    height: 100%;
+    padding: 0 20px;
+    position: relative;
+}
+
+.requestsNumber {
+    position: absolute;
+    background-color: rgb(22, 182, 22);
+    border-radius: 50%;
+    padding: 2px;
+    color: white;   
+    right: 2px;
+    top: 5px;
+    min-width: 20px;
+    min-height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+} */
+
+.mainDiv main {
+    margin-left: 300px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    background-color: #F8F4E3;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* .tabSelected {
+    background-color: #A48200;
+} */
+
+@media (max-width: 699px) {
+    .mainDiv main {
+        min-width: 200px;
+        margin-left: 0px;
+    }
+
+    .mainDiv aside {
+        width: 70%;
+    }
+
+    @media(max-width: 399px) {
+        .mainDiv aside {
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 700px) {
+    .mainDiv aside {
+        transform: translateX(0);
+    }
+}
