@@ -5,6 +5,7 @@
     justify-content: left;
     background-color: #dab600;
     padding: 0 20px;
+    overflow: hidden;
 }
 
 .headerParagraph {
@@ -99,6 +100,7 @@
     justify-content: space-evenly;
     padding: 10px 5px;
     margin-right: 20px;
+    flex-shrink: 0;
 }
 
 .sideDrawerToggle div{
@@ -106,7 +108,7 @@
     height: 3px;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
     .sideDrawerToggle{
         display: none;
     }

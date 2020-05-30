@@ -25,6 +25,24 @@ const dateComparator = (recentDate, pastDate) => {
         return 'Hoje';
     } else if(differenceInDays === 1) {
         return 'Ontem';
+    } else if(differenceInDays < 6) {
+        const dayOfWeek = pastDate.getDay();
+        switch(dayOfWeek) {
+            case 0:
+                return 'Domingo';
+            case 1:
+                return 'Segunda-Feira';
+            case 2:
+                return 'Terça-Feira';
+            case 3:
+                return 'Quarta-feira';
+            case 4:
+                return 'Quinta-Feira';
+            case 5:
+                return 'Sexta-Feira';
+            case 6:
+                return 'Sábado';
+        }
     } else {
             return pastDateFormated;
     }

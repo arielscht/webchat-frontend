@@ -10,6 +10,7 @@ import Header from './Header/Index';
 import FriendList from './FriendsList';
 import FriendsRequests from './FriendsRequests';
 import SearchFriend from './SearchFriend';
+import Backdrop from '../../components/UI/Backdrop';
 
 const Sidebar = ({ opened, close }) => {
     const [tabRendered, setTabRendered] = useState(1);
@@ -36,16 +37,19 @@ const Sidebar = ({ opened, close }) => {
     }
 
     return (
+        <>
+        <Backdrop show={opened} clicked={close}/>
         <aside className={sidebarClasses.join(' ')}>
             <Header tabRendered={tabRendered} setTabRendered={setTabRendered}/>
             { tabRendered === 1 ?
                 <FriendList closeSideDrawer={close}/>
-            : tabRendered === 2 ?
+                : tabRendered === 2 ?
                 <FriendsRequests/>
-            : tabRendered === 3 ?
+                : tabRendered === 3 ?
                 <SearchFriend closeSideDrawer={close}/>
-            : null}
+                : null}
         </aside>
+        </>
     );
 };
 

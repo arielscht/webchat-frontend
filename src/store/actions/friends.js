@@ -33,18 +33,55 @@ export const getFriends = () => {
                 }
             });
 
-            const lastMessages = lastMessagesResponse.data;
+            const unreadMessagesResponse = await api.get('/unread',{
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
+            })
 
+            
+            const lastMessages = lastMessagesResponse.data;
+            const unreadMessagesCount = unreadMessagesResponse.data;
+            console.log(unreadMessagesCount);
+            
+            // const friendsArray = friends.map((friend, index) => {
+            //     for(let message of lastMessages) {
+            //         if(message.friendId === friend.id) {
+            //             return updateObject(friend, {
+            //                 lastMessage: message.message,
+            //                 typing: false
+            //             });
+            //         }
+            //     }
+            // });
             const friendsArray = friends.map((friend, index) => {
+                let objectToMerge = {}
                 for(let message of lastMessages) {
                     if(message.friendId === friend.id) {
-                        return updateObject(friend, {
+                        objectToMerge = updateObject(friend, {
                             lastMessage: message.message,
                             typing: false
+                        });
+                        break;
+                    }
+                }
+                for(let friendMessages of unreadMessagesCount) {
+                    if(friendMessages.friendId === friend.id) {
+                        return updateObject(objectToMerge, {
+                            unreadMessages: friendMessages.count
                         });
                     }
                 }
             });
+            // friendsArray = friendsArray.map((friend, index) => {
+            //     for(let friendMessages of unreadMessagesCount) {
+            //         if(friendMessages.friendId === friend.id) {
+            //             return updateObject(friend, {
+            //                 unreadMessages: friendMessages.count
+            //             });
+            //         }
+            //     }
+            // });
 
             friendsArray.sort(function (a, b) {
                 if(b.lastMessage && a.lastMessage) {
@@ -58,6 +95,7 @@ export const getFriends = () => {
                 }
             });
 
+            console.log('friends', friendsArray);
             dispatch(onGotFriends(friendsArray));
        } catch(err) {
             console.log(err);
@@ -129,11 +167,12 @@ export const updateCurrentFriend = (friendId) => {
     }
 }
 
-export const updateFriendList = (friendId, newLastMessage) => {
+export const updateFriendList = (friendId, newLastMessage, newUnreadMessages) => {
     return {
         type: actionTypes.UPDATE_FRIEND_LIST,
         friendId: friendId,
-        lastMessage: newLastMessage
+        lastMessage: newLastMessage,
+        unreadMessages: newUnreadMessages
     }
 }
 

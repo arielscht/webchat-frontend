@@ -24,6 +24,16 @@ const reducer = (state = initialState, action) => {
             }
         case actionTypes.ADD_MESSAGE:
                 return updateObject(state, { messages: [action.message, ...state.messages] });
+        case actionTypes.UPDATE_MESSAGES_READ_STATUS:
+                const messages = [...state.messages];
+                const newMessages = messages.map(message => {
+                    if(action.messagesIds.includes(message.id)) {
+                        return updateObject(message, {read: 1});
+                    } else {
+                        return message;
+                    }
+                });
+                return updateObject(state, {messages: newMessages});
         default: 
             return state;
     }

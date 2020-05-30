@@ -42,9 +42,27 @@
     background-color: green;
 }
 
+.onlineAndTimeWrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 10px;
+}
+
 .lastMessageContainer {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    /* border: 2px solid green; */
+}
+
+.lastMessageAndIconWrapper {
+    flex: 1;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    /* border: 1px solid red; */
+    overflow: hidden;
 }
 
 .lastMessage {
@@ -54,4 +72,23 @@
     overflow: hidden;
     text-overflow: ellipsis;
     align-items: center;
+    /* border: 2px solid yellow; */
+}
+
+.lastMessageTime {
+    margin-left: 10px;
+    font-size: .9em;
+}
+
+.unreadMessages {
+    background-color: rgb(22, 182, 22);
+    border-radius: 50%;
+    padding: 2px;
+    color: white;   
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
 }

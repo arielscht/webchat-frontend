@@ -11,6 +11,8 @@ export {
 export {
     getMessages,
     sendMessage,
-    addMessage
+    addMessage,
+    updateMessagesReadStatus,
+    updateMessagesReadStatusLocally
 } from './messages';
 

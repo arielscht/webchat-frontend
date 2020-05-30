@@ -57,7 +57,7 @@
 } */
 
 .mainDiv main {
-    margin-left: 300px;
+    margin-left: 400px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -70,7 +70,7 @@
     background-color: #A48200;
 } */
 
-@media (max-width: 699px) {
+@media (max-width: 799px) {
     .mainDiv main {
         min-width: 200px;
         margin-left: 0px;
@@ -87,7 +87,7 @@
     }
 }
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
     .mainDiv aside {
         transform: translateX(0);
     }

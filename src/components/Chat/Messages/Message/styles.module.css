@@ -26,11 +26,21 @@
     align-self: flex-end;
 }
 
-.sent .message .time {
+.timeAndReadContainer {
+    display: flex;
+    justify-content: space-around;
+    align-self: flex-end;
+}
+
+.sent .message .timeAndReadContainer {
     margin-left: 15px;
 }
 
-.received .message .time {
+.sent .message .time {
+    margin-right: 5px;
+}
+
+.received .message .timeAndReadContainer {
     order: -1;
     margin-right: 15px;
 }

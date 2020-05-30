@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdDoneAll } from 'react-icons/md'
 
 import classes from './styles.module.css';
 
@@ -21,7 +22,15 @@ const Message = ({ message }) => {
         <div className={messageClasses.join(' ')}>
             <div className={classes.message}>
                 <p className={classes.text}>{message.text}</p>
-                <p className={classes.time}>{hour}:{minute.length === 1 ? "0" + minute : minute}</p>
+
+                <div className={classes.timeAndReadContainer}>
+                    <p className={classes.time}>{hour}:{minute.length === 1 ? "0" + minute : minute}</p>
+                    {message.sender == userId ?
+                    message.read === 1 ?
+                    <MdDoneAll color={"blue"} size={15}/>
+                    : <MdDoneAll color={"gray"} size={15}/>
+                    : null}
+                </div>
                 {/* <p className={classes.time}>{dateMessage}</p> */}
             </div>
         </div>

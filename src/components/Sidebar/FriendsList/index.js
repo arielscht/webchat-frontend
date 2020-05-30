@@ -11,21 +11,24 @@ import Loader from '../../UI/Loader/Loader';
 
 import friendsClasses from './FriendList.module.css';
 import sidebarClasses from '../CSS/Sidebar.module.css';
+import classes from './FriendList.module.css';
 
 function FriendList({ closeSideDrawer }) {
     const dispatch = useDispatch();
 
     const socket = useContext(socketContext);
     
-    const { friends, loading, friendId } = useSelector(state => {
+    const { friends, loading, friendId, messages } = useSelector(state => {
         return {
             friends: state.friends.friends,
             loading: state.friends.loading,
-            friendId: state.friends.currentFriend
+            friendId: state.friends.currentFriend,
+            messages: state.messages.messages
         }
     })
 
     const onGetFriends = () => dispatch(actionCreators.getFriends());
+    // const onReadMessages = (friendId, messages) => dispatch(actionCreators.updateMessagesReadStatus(friendId, messages));
     
     const onSelectFriend = (newFriendId) => {
         closeSideDrawer();
@@ -42,6 +45,15 @@ function FriendList({ closeSideDrawer }) {
             onGetFriends();
         });
     }, []);
+
+    const onClickFriend = (friendId) => {
+        onSelectFriend(friendId);
+        // if(unreadMessages > 0) {
+        //     onReadMessages(friendId, messages);
+        //     //update the read status to '1';
+        //     //update unreadMessages to 0;
+        // }
+    }
 
     return(
         <ul className={sidebarClasses.sidebarUl}>
@@ -73,30 +85,44 @@ function FriendList({ closeSideDrawer }) {
                     <li 
                         key={friend.id}
                         className={friendsClasses.li}
-                        onClick={() => onSelectFriend(friend.id)}
+                        onClick={() => onClickFriend(friend.id)}
                     >
                         <div className={friendsClasses.friendNameWrapper}>
                             <p className={friendsClasses.friendName}>{friend.name}</p>
-                            {  
-                                friend.online ? 
-                                <div className={friendsClasses.online}></div> : 
-                                null
-                            }
-                            {lastMessageTime}
+                            <div className={friendsClasses.onlineAndTimeWrapper}>
+                                {  
+                                    friend.online ? 
+                                    <div className={friendsClasses.online}></div> : 
+                                    null
+                                }
+                                <p className={friendsClasses.lastMessageTime}>{lastMessageTime}</p>
+                            </div>
                         </div>
+                        <div className={friendsClasses.lastMessageContainer}>
                         {
                         friend.typing ? 
                             <p className={friendsClasses.typing}>Digitando...</p> :
                         friend.lastMessage ? 
-                        <div className={friendsClasses.lastMessageContainer}>
-                            {friend.lastMessage.sender === friend.id ?
-                            <FiArrowDownRight color={'blue'} size={15} />
-                            : <FiArrowUpRight color={'green'} size={15} />}
-                            <p className={friendsClasses.lastMessage}>
-                                {friend.lastMessage.text}
-                            </p>
-                        </div>
+                        
+                            <div className={friendsClasses.lastMessageAndIconWrapper}>
+                                {friend.lastMessage.sender === friend.id ?
+                                <FiArrowDownRight color={'blue'} size={15} />
+                                : <FiArrowUpRight color={'green'} size={15} />}
+                                <p className={friendsClasses.lastMessage}>
+                                    {friend.lastMessage.text}
+                                </p>
+                            </div>
+                            
+                        
                         : null}
+                        {friend.unreadMessages > 0 ?
+                            <span className={classes.unreadMessages}>
+                                {friend.unreadMessages}
+                            </span>
+                        : null}
+                        </div>
+                        
+                        
                     </li>
                 )
             })}

@@ -89,7 +89,10 @@ export default function SearchFriend({ closeSideDrawer }) {
             : null }
                 {usersFound.map(friend => (
                     <li className={sidebarClasses.sidebarLi} key={friend.id}>
-                        <p>{friend.name}</p>
+                        <div>
+                            <p className={searchClasses.userName}>{friend.name}</p>
+                            <p className={searchClasses.userUsername}>{friend.username}</p>
+                        </div>
                         <span className={searchClasses.iconGroup}>
                             {pendingIds.includes(friend.id) ? 
                                 <>

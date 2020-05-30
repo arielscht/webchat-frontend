@@ -41,3 +41,12 @@
     display: flex;
     align-items: center;
 }
+
+.userName {
+    font-size: 1.25em;
+}
+
+.userUsername {
+    font-size: 1em;
+    color: rgb(148, 145, 145);
+}

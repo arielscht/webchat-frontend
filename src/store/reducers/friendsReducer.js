@@ -32,10 +32,21 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_CURRENT_FRIEND:
             return updateObject(state, { currentFriend: action.friendId });
         case actionTypes.UPDATE_FRIEND_LIST:
+            console.log('updateFriendList');
+            console.log('lastMessage ', action.lastMessage);
+            console.log('unreadMessages ', action.unreadMessages);
             const friendsArray = [...state.friends];
             const friendIndex = friendsArray.findIndex(friend => friend.id === action.friendId);
             const currentFriend = updateObject(friendsArray[friendIndex], {});
-            const updatedFriend = updateObject(currentFriend, { lastMessage: action.lastMessage });
+            let updatedFriend = currentFriend;
+            if(action.lastMessage !== null) {
+                console.log('updateLastMessage');
+                updatedFriend = updateObject(updatedFriend, { lastMessage: action.lastMessage });
+            } 
+            if(action.unreadMessages !== null) {
+                console.log('updateUnreadMessages');
+                updatedFriend = updateObject(updatedFriend, { unreadMessages: action.unreadMessages });
+            }
             friendsArray.splice(friendIndex, 1);
             friendsArray.unshift(updatedFriend);
             return updateObject(state, { friends: friendsArray });

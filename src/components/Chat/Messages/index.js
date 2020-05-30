@@ -21,15 +21,18 @@ const Messages = ({ message }) => {
 
     const dispatch = useDispatch();
     
-    const onGetMessages = (friendId, page) => dispatch(actionCreators.getMessages(friendId, page));
+    const onGetMessages = (friendId, page, friend) => dispatch(actionCreators.getMessages(friendId, page, friend));
+    const onMessagesRead = (messagesIds) =>  dispatch(actionCreators.updateMessagesReadStatusLocally(messagesIds));
 
     let lastMessageDate = [[]];
+    let lastMessageView = null;
 
-    const { messages, loading, friendId, totalMessages } = useSelector(state => {
+    const { messages, loading, friend, friendId, totalMessages } = useSelector(state => {
         return {
             messages: state.messages.messages,
             loading: state.messages.loading,
             totalMessages: state.messages.totalMessages,
+            friend: state.friends.friends.filter(friend => friend.id === state.friends.currentFriend),
             friendId: state.friends.currentFriend
         }
     });
@@ -37,7 +40,13 @@ const Messages = ({ message }) => {
     useEffect(() => {
         setPage(1);
         sethasMore(true);
-        onGetMessages(friendId, 1);
+        onGetMessages(friendId, 1, friend[0]);
+        socket.off('messagesRead');
+        socket.on('messagesRead', data => {
+            if(data.friendId === friendId) {
+                onMessagesRead(data.messagesIds);
+            }
+        });
     }, [friendId]);
 
     useEffect(() => {
@@ -82,23 +91,30 @@ const Messages = ({ message }) => {
                     
 
                     let messagesDateIndicator = null;
+                    // let newMessagesIndicator = null;
                    
                     if(lastMessageDate.length > 1) {
                     if(messageDateFormated !== lastMessageDate[1] || index === messages.length - 1) {
-        
-                    const dateToPrint = datesComparator(date, lastMessageDate[2]);
-                        messagesDateIndicator = <ChatNotification message={dateToPrint}/>
+                        const dateToPrint = datesComparator(date, lastMessageDate[2]);
+                            messagesDateIndicator = <ChatNotification message={dateToPrint}/>
+                        }
                     }
-                    }
+                    // console.log(message.read, lastMessageView);
+                    // if(message.read == 1 && lastMessageView == 0) {
+                    //     // console.log('new');
+                    //     newMessagesIndicator = <ChatNotification message={"Novas Mensagens"}/>
+                    // }
 
                     lastMessageDate[0] = [messageDay, messageMonth, messageYear];
                     lastMessageDate[1] = messageDateFormated;
                     lastMessageDate[2] = messageDate;
+                    // lastMessageView = message.read;
 
                     return (
                         <React.Fragment key={message.id}>
                         {index !== messages.length - 1 ? messagesDateIndicator : null}
                         {/* <Message message={message} dateMessage={messageDateFormated}/> */}
+                        {/* {newMessagesIndicator} */}
                         <Message message={message}/>
                         {index === messages.length - 1 ? messagesDateIndicator : null}
                         </React.Fragment>

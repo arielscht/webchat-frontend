@@ -1,6 +1,7 @@
 .sidebarLi {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px lightgray solid;
     height: 50px;
     padding: 15px;

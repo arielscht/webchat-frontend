@@ -17,7 +17,7 @@ export default function ChatContainer({ friend, openSideDrawer }) {
                 <div></div>
                 <div></div>
             </div>
-            <div>
+            <div style={{overflow: 'hidden'}}>
                 <p className={classes.headerParagraph}>{friend[0].name}</p>
                 <p className={classes.online}>
                     {friend[0].typing ? 'Digitando...' : friend[0].online ? 'Online' : null}
