@@ -88,7 +88,7 @@ function FriendList({ closeSideDrawer }) {
                         onClick={() => onClickFriend(friend.id)}
                     >
                         <div className={friendsClasses.friendNameWrapper}>
-                            <p className={friendsClasses.friendName}>{friend.name}</p>
+                            <p className={friendsClasses.friendName} title={friend.name}>{friend.name}</p>
                             <div className={friendsClasses.onlineAndTimeWrapper}>
                                 {  
                                     friend.online ? 

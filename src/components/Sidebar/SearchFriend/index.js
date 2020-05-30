@@ -89,8 +89,8 @@ export default function SearchFriend({ closeSideDrawer }) {
             : null }
                 {usersFound.map(friend => (
                     <li className={sidebarClasses.sidebarLi} key={friend.id}>
-                        <div>
-                            <p className={searchClasses.userName}>{friend.name}</p>
+                        <div style={{overflow: 'hidden'}}>
+                            <p className={searchClasses.userName} title={friend.name}>{friend.name}</p>
                             <p className={searchClasses.userUsername}>{friend.username}</p>
                         </div>
                         <span className={searchClasses.iconGroup}>
@@ -100,7 +100,7 @@ export default function SearchFriend({ closeSideDrawer }) {
                                 {/* <p>pendente</p> */}
                                 </>
                             :friendsIds.includes(friend.id) ?
-                                <FiUserCheck onClick={() => onSelectFriend(friend.id)} color={'green'} size={25} className={searchClasses.icon}/>
+                                <FiUserCheck onClick={() => onSelectFriend(friend.id)} color={'green'} size={25} className={searchClasses.icon} title="Conversar"/>
                             :
                                 <FiPlus color={'green'} size={25} className={searchClasses.icon} onClick={() => addFriend(friend.id)} title="Adicionar como amigo"/>
                             }

@@ -44,9 +44,15 @@
 
 .userName {
     font-size: 1.25em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .userUsername {
     font-size: 1em;
     color: rgb(148, 145, 145);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
