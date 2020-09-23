@@ -60,7 +60,8 @@ export default function Login() {
             console.log(localStorage.getItem('userId'));
             history.push('/');
         } catch (error) {
-            validation(null, error.response.data);
+            console.log(error.response.data.message);
+            validation(null, error.response.data.message);
         }
     }
 

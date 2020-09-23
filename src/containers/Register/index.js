@@ -56,8 +56,8 @@ export default function Register() {
             await api.post('signup', data)
             history.push('/');
         } catch (error) {
-            console.log(error.response.data);
-            validation(null, error.response.data);
+            console.log(error.response.data.message);
+            validation(null, error.response.data.message);
         }
         
 
